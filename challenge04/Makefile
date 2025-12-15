@@ -1,26 +1,19 @@
 CC=gcc
 CFLAGS=-Wall -Wextra -Werror
-NAME=calc
-SRCS=starter.c suma.c resta.c multiplicacion.c division.c
-OBJS=$(SRCS:.c=.o)
-TEST=test_challenge04
+TARGET=starter
+TEST_TARGET=test_challenge04
+FILES=suma.c resta.c multiplicacion.c division.c 
+MAIN_FILES=starter.c $(FILES)
+TEST_FILES=test_challenge04.c $(FILES)
 
-all: $(NAME)
+all: $(TARGET)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+$(TARGET): $(MAIN_FILES)
+	$(CC) $(CFLAGS) -o $(TARGET) $(MAIN_FILES) 
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+test: $(TEST_FILES)
+	$(CC) $(CFLAGS) -o $(TEST_TARGET) $(TEST_FILES)
+	./$(TEST_TARGET)
 
 clean:
-	rm -f $(OBJS)
-
-fclean: clean
-	rm -f $(NAME) $(TEST)
-
-re: fclean all
-
-test: $(SRCS) test_challenge04.c
-	$(CC) $(CFLAGS) -o $(TEST) $(SRCS) test_challenge04.c
-	./$(TEST)
+	rm -f $(TARGET) $(TEST_TARGET)

@@ -1,3 +1,4 @@
+#include "stdio.h"
 #include <stdio.h>
 
 // Declaración de la función a implementar
