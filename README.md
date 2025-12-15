@@ -1,3 +1,5 @@
+# STATUS BADGE
+[![C CI](https://github.com/TwikiTuki/Retos_CI-CD/actions/workflows/ci.yml/badge.svg)](https://github.com/TwikiTuki/Retos_CI-CD/actions/workflows/ci.yml)
 # Taller de CI/CD en C
 
 formulario obligatorio: https://airtable.com/appwlasoZKbH8Mu7v/paghVMEXjrj2ieHqA/form
