@@ -1,16 +1,23 @@
 CC=gcc
 CFLAGS=-Wall -Wextra -Werror
-TARGET=starter
-TEST_TARGET=test_challenge07
+SRC=src/suma.c src/resta.c src/multiplicacion.c src/division.c 
+TARGET=programa
+TEST_TARGET=test_challenge06
 
-all: $(TARGET)
+MAIN=starter.c
+TEST_MAIN=test_challenge06.c
 
-$(TARGET): starter.c
-	$(CC) $(CFLAGS) -o $(TARGET) starter.c
+build: $(SRC) $(MAIN)
+	$(CC) $(CFLAGS) -o $(TARGET) $(SRC) $(MAIN)
 
-test: starter.c test_challenge07.c
-	$(CC) $(CFLAGS) -o $(TEST_TARGET) starter.c test_challenge07.c
+test: build $(TEST_MAIN)
+	$(CC) $(CFLAGS) -o $(TEST_TARGET) $(SRC) $(TEST_MAIN)
 	./$(TEST_TARGET)
 
+package: build
+	mkdir -p dist
+	cp $(TARGET) dist/
+
 clean:
-	rm -f $(TARGET) $(TEST_TARGET)
+	rm -f $(TARGET) $(TEST_TARGET) 
+	rm -rf dist
